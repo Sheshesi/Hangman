@@ -41,6 +41,26 @@ void Menu::menu(RenderWindow &window, Music &jazz) {
       shadowButtonQ(Quit), shadowButtonO(options);
   bool isMenu = true;
   int menuNum = 0;
+  ButtonNG.setScale(0.6, 0.6);
+  ButtonHTP.setScale(0.6, 0.6);
+  ButtonQ.setScale(0.6, 0.6);
+  ButtonO.setScale(0.6, 0.6);
+  shadowButtonNG.setPosition(110, 260);
+  shadowButtonHTP.setPosition(1060, 405);
+  shadowButtonQ.setPosition(110, 405);
+  shadowButtonO.setPosition(1060, 260);
+  shadowButtonNG.setScale(0.6, 0.6);
+  shadowButtonHTP.setScale(0.6, 0.6);
+  shadowButtonQ.setScale(0.6, 0.6);
+  shadowButtonO.setScale(0.6, 0.6);
+  shadowButtonNG.setColor(Color(0, 0, 0, 64));
+  shadowButtonHTP.setColor(Color(0, 0, 0, 64));
+  shadowButtonQ.setColor(Color(0, 0, 0, 64));
+  shadowButtonO.setColor(Color(0, 0, 0, 64));
+  TitleSprite.setPosition(450, 70);
+  HangSprite.setPosition(400, 200);
+  HangSprite.setScale(0.8, 0.8);
+  ManSprite.setScale(0.8, 0.8);
   while (isMenu) {
     sf::Event event;
     while (window.pollEvent(event)) {
