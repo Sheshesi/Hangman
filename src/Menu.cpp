@@ -68,7 +68,79 @@ void Menu::menu(RenderWindow &window, Music &jazz) {
         window.close();
       }
     }
+    ButtonNG.setColor(Color::White);
+    ButtonHTP.setColor(Color::White);
+    ButtonQ.setColor(Color::White);
+    ButtonO.setColor(Color::White);
+    ButtonNG.setPosition(100, 250);
+    ButtonHTP.setPosition(1050, 395);
+    ButtonQ.setPosition(100, 395);
+    ButtonO.setPosition(1050, 250);
+    ManSprite.setPosition(687, 278);
+    ShadowSprite.setPosition(575, 620);
+    menuNum = 0;
     window.clear(Color(168, 154, 98));
+    if (IntRect(100, 250, 203, 105).contains(Mouse::getPosition(window))) {
+      ButtonNG.setColor(Color(160, 160, 160));
+      ButtonNG.setPosition(110, 260);
+      menuNum = 1;
+    }
+    if (IntRect(1050, 395, 203, 105).contains(Mouse::getPosition(window))) {
+      ButtonHTP.setColor(Color(204, 204, 204));
+      ButtonHTP.setPosition(1060, 405);
+      menuNum = 2;
+    }
+    if (IntRect(100, 395, 203, 105).contains(Mouse::getPosition(window))) {
+      ButtonQ.setColor(Color(214, 214, 214));
+      ButtonQ.setPosition(110, 405);
+      menuNum = 3;
+    }
+    if (IntRect(1050, 250, 203, 105).contains(Mouse::getPosition(window))) {
+      ButtonO.setColor(Color(214, 214, 214));
+      ButtonO.setPosition(1060, 260);
+      menuNum = 4;
+    }
+    if (IntRect(687, 278, 70, 120).contains(Mouse::getPosition(window))) {
+      if (event.type == Event::MouseButtonPressed) {
+        if (event.mouseButton.button == Mouse::Left) {
+          ManSprite.setPosition(687, 283);
+          ShadowSprite.setPosition(580, 616);
+        }
+      }
+    }
+    if (event.type == Event::MouseButtonReleased) {
+      if (event.mouseButton.button == Mouse::Left) {
+        if (menuNum == 1) {
+          sound.play();
+          isMenu = false;
+        }
+        if (menuNum == 2) {
+          sound.play();
+        }
+        if (menuNum == 3) {
+          sound.play();
+          window.close();
+          isMenu = false;
+        }
+        if (menuNum == 4) {
+          sound.play();
+        }
+      }
+    }
+    window.draw(HangSprite);
+    window.draw(ShadowSprite);
+    window.draw(TitleSprite);
+    window.draw(text);
+    window.draw(shadowButtonNG);
+    window.draw(shadowButtonHTP);
+    window.draw(shadowButtonQ);
+    window.draw(shadowButtonO);
+    window.draw(ButtonNG);
+    window.draw(ButtonHTP);
+    window.draw(ButtonQ);
+    window.draw(ButtonO);
+    window.draw(ManSprite);
+
     window.display();
   }
 }
