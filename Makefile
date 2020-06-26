@@ -21,5 +21,8 @@ $(BUL)Menu.o: $(SR)Menu.cpp
 	$(SS) $(SSFLAGS) -I $(SR) -c $(SR)Menu.cpp -o $(BUL)Menu.o $(SFML)
 
 clean:
-	rm -rf $(BUL)/*.o
-	rm -rf $(BIN)/game
+	rm -rf $(BUL)*.o
+	rm -rf $(BIN)game
+
+run:
+	$(BIN)game
