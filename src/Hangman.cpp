@@ -13,7 +13,10 @@ int main()
 	Sound clap;
     Menu menuShow;
 	SoundBuffer buffer, buffer2;
+    jazz.openFromFile("audio/Jazz.ogg");
     logo.ShowLogo(window);
+    jazz.play();
+    jazz.setLoop(true);
     menuShow.menu(window,jazz);
     return 0;
 }
