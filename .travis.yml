@@ -6,5 +6,5 @@ addons:
   apt_packages:
     - libsfml-dev
 script:
-- make && make run
+- make && make run && make testing
 - git ls-files src/ | xargs clang-format -i && git diff --exit-code

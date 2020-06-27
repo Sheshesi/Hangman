@@ -24,7 +24,7 @@ void Menu::menu(RenderWindow &window, Music &jazz) {
   newGame.loadFromFile("images/menu/NewGame.png");
   howToPlay.loadFromFile("images/menu/HowToPlay.png");
   Quit.loadFromFile("images/menu/Quit.png");
-  titleTexture.loadFromFile("images/Title.png");
+  titleTexture.loadFromFile("images/TITLE.png");
   hangTexture.loadFromFile("images/menu/Hang.png");
   options.loadFromFile("images/menu/Options.png");
   options.setSmooth(true);

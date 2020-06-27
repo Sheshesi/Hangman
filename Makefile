@@ -7,8 +7,10 @@ SFML = -lsfml-graphics -lsfml-audio -lsfml-window -lsfml-system
 SR = src/
 BUL = build/
 BIN = bin/
+BUL_TEST = build/test/
+all: $(BIN)game $(BIN)check
 
-game: $(BUL)Hangman.o $(BUL)logo.o $(BUL)Menu.o
+$(BIN)game: $(BUL)Hangman.o $(BUL)logo.o $(BUL)Menu.o $(BIN)check
 	$(SS) -o $(BIN)game $(BUL)Hangman.o $(BUL)logo.o $(BUL)Menu.o $(SFML)
 
 $(BUL)Hangman.o: $(SR)Hangman.cpp
@@ -19,6 +21,15 @@ $(BUL)logo.o: $(SR)logo.cpp
 
 $(BUL)Menu.o: $(SR)Menu.cpp
 	$(SS) $(SSFLAGS) -I $(SR) -c $(SR)Menu.cpp -o $(BUL)Menu.o $(SFML)
+
+$(BIN)check: $(BUL_TEST)logo_test.o $(BUL)logo.o
+	$(SS) $(BUL_TEST)logo_test.o $(BUL)logo.o -o $(BIN)check $(SFML)
+
+$(BUL_TEST)logo_test.o: test/logo_test.cpp
+	$(SS) -I thirdparty -I src -c test/logo_test.cpp -o $(BUL_TEST)logo_test.o $(SFML)
+
+testing:
+	$(BIN)check
 
 clean:
 	rm -rf $(BUL)*.o

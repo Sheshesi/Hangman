@@ -5,7 +5,7 @@
 using namespace sf;
 int main()
 {
-    RenderWindow window(VideoMode(1366, 768), "Hangman", Style::Fullscreen);
+    RenderWindow window(VideoMode(1366, 768), "Hangman");
     Font font;
     Logo logo;
     Music jazz;

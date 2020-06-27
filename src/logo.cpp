@@ -5,14 +5,12 @@ using namespace sf;
 void Logo::ShowLogo(RenderWindow& window)
 {
     Music music;
-    Image titleImage;
     Texture titleTexture;
     Sprite titleSprite;
     Clock clock;
     music.openFromFile("audio/Logo.ogg");
     music.play();
-    titleImage.loadFromFile("images/TITLE.png");
-    titleTexture.loadFromImage(titleImage);
+    titleTexture.loadFromFile("images/TITLE.png");
     titleTexture.setSmooth(true);
     titleSprite.setTexture(titleTexture);
     titleSprite.setColor(Color::White);
