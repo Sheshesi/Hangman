@@ -34,6 +34,7 @@ testing:
 clean:
 	rm -rf $(BUL)*.o
 	rm -rf $(BIN)game
+	rm -rf $(BIN)check
 
 run:
 	$(BIN)game
