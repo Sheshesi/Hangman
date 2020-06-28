@@ -5,5 +5,5 @@ using namespace sf;
 using namespace std;
 class mainLogic{
 public:
-    void logicFunction(RenderWindow& window,vector<Sprite> &sprt, vector<Texture> &txtr, vector<Sprite> &shadow, Music &jazz, string &THE_WORD);
+    void logicFunction(RenderWindow& window,vector<Sprite> &sprt, vector<Texture> &txtr, vector<Sprite> &shadow, Music &jazz, string &the_word, string &path);
 };
