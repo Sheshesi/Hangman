@@ -123,6 +123,7 @@ int main() {
 	vector<Sprite> sprt(MAX_SIZE, Sprite());
 	vector<Texture> txtr(MAX_SIZE, Texture());
   int num = 0;
+  int i = 0;
   jazz.openFromFile("audio/Jazz.ogg");
   logo.ShowLogo(window);
   jazz.play();
@@ -131,6 +132,7 @@ int main() {
   choiseTheTheme(num,&path);
   themeFile.open(path);
   choiseTheWord(themeFile,&str,words);
+  const string THE_WORD = words[i];
   loadFromFile(sprt, txtr, shadow);
   return 0;
 }
