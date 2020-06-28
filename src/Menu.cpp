@@ -4,14 +4,18 @@
 #include "SFML/Audio.hpp"
 #include "SFML/Graphics.hpp"
 #include <iostream>
+#include "logic.hpp"
+#include <vector>
+#include <string>
 
 using namespace sf;
-void Menu::menu(RenderWindow &window, Music &jazz) {
+void Menu::menu(RenderWindow &window, vector<Sprite> &sprt, vector<Texture> &txtr, vector<Sprite> &shadow, Music &jazz, const string &THE_WORD) {
   Font font;
   Clock clock;
   SoundBuffer buffer;
   howToButton howTo;
   options optionButton;
+  mainLogic logic;
   buffer.loadFromFile("audio/Click.ogg");
   Sound sound;
   sound.setBuffer(buffer);
@@ -64,7 +68,7 @@ void Menu::menu(RenderWindow &window, Music &jazz) {
   while (isMenu) {
     sf::Event event;
     while (window.pollEvent(event)) {
-      if (Keyboard::isKeyPressed(Keyboard::Space)) {
+      if (Keyboard::isKeyPressed(Keyboard::Tab)) {
         window.close();
       }
     }
@@ -112,7 +116,7 @@ void Menu::menu(RenderWindow &window, Music &jazz) {
       if (event.mouseButton.button == Mouse::Left) {
         if (menuNum == 1) {
           sound.play();
-          isMenu = false;
+          logic.logicFunction(window,sprt,txtr,shadow,jazz,THE_WORD);
         }
         if (menuNum == 2) {
           sound.play();
