@@ -23,6 +23,7 @@ int options::Option(RenderWindow &window, Music &jazz) {
   buttonBackShadow.setColor(Color(0, 0, 0, 64));
   buttonBackShadow.setPosition(560, 550);
   buttonBack.setScale(0.6, 0.6);
+  bool isOption = true;
   int volume = 100;
   Font font;
   font.loadFromFile("19183.ttf");
@@ -37,4 +38,19 @@ int options::Option(RenderWindow &window, Music &jazz) {
   text.setFillColor(Color::Black);
   text.setPosition(700, 300);
   Clock clock;
+  while (isOption) {
+    Event event;
+    while (window.pollEvent(event)) {
+      if (Keyboard::isKeyPressed(Keyboard::Escape)) {
+        isOption = false;
+      }
+    }
+    window.draw(buttonBackShadow);
+    window.draw(reverseTriangle);
+    window.draw(triangle);
+    window.draw(text);
+    window.draw(aboutVolume);
+    window.draw(buttonBack);
+    window.display();
+  }
 }
