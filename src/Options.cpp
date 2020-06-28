@@ -39,7 +39,6 @@ int options::Option(RenderWindow &window, Music &jazz) {
   text.setFillColor(Color::Black);
   text.setPosition(700, 300);
   setVolume << volume;
-  bool flagForMusic = true;
   Clock clock;
   int volumePath;
   while (isOption) {
@@ -58,7 +57,6 @@ int options::Option(RenderWindow &window, Music &jazz) {
     text.setFillColor(Color::Black);
     text.setPosition(700, 300);
     jazz.setVolume(volume);
-    bool press = false;
     window.clear(Color(168, 154, 98));
     buttonBack.setPosition(550, 540);
     volumePath = 0;
