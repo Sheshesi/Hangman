@@ -8,14 +8,14 @@ using namespace sf;
 using namespace std;
 const int MAX_SIZE = 26; // Максимальное количество букв латинского алфавита
 
-void matchLetter(const string &THE_WORD, char &letter, string &used, int &pos, int &wrong, Clock &clock) {
-	if (THE_WORD.find(letter) != string::npos)
+void matchLetter(string &the_word, char &letter, string &used, int &pos, int &wrong, Clock &clock) {
+	if (the_word.find(letter) != string::npos)
 	{
-		for (unsigned int i = 0; i < THE_WORD.size(); i++)
+		for (unsigned int i = 0; i < the_word.size(); i++)
 		{
-			if (THE_WORD[i] == letter)
+			if (the_word[i] == letter)
 			{
-				used[i] = THE_WORD[pos];
+				used[i] = the_word[pos];
 			}
 		}
 	}
@@ -26,13 +26,15 @@ void matchLetter(const string &THE_WORD, char &letter, string &used, int &pos, i
 	clock.restart();
 }
 
-void mainLogic::logicFunction(RenderWindow& window,vector<Sprite> &sprt, vector<Texture> &txtr, vector<Sprite> &shadow, Music &jazz, const string &THE_WORD){
+void mainLogic::logicFunction(RenderWindow& window,vector<Sprite> &sprt, vector<Texture> &txtr, vector<Sprite> &shadow, Music &jazz, string &the_word){
     Texture hangPart_1, hangPart_2, hangPart_3, hangPart_4, rope, man, backgroundTexture;
     Sprite hangPartSprite_1, hangPartSprite_2, hangPartSprite_3, hangPartSprite_4, ropeSprite, manSprite, backgroundSprite;
     Clock clock;
     Menu menuShow;
     Sound sound, clap;
 	SoundBuffer buffer, buffer_2;
+	Font font;
+	font.loadFromFile("19183.ttf");
     hangPart_1.loadFromFile("images/hang/1 board.png");
     hangPart_2.loadFromFile("images/hang/2 board.png");
     hangPart_3.loadFromFile("images/hang/3 board.png");
@@ -60,7 +62,10 @@ void mainLogic::logicFunction(RenderWindow& window,vector<Sprite> &sprt, vector<
     hangPartSprite_3.setScale(0.8, 0.8);
     hangPartSprite_4.setScale(0.8, 0.8);
     backgroundSprite.setScale(0.9, 0.9);
-    string used(THE_WORD.size(),'-');
+    string used(the_word.size(),'-');
+	Text wordToDisplay(used, font, 144);
+	wordToDisplay.setPosition(70, 520);
+	wordToDisplay.setFillColor(Color::Blue);
     float x = 600;
 	float y = 100;
     int wrong = 0;
@@ -75,10 +80,11 @@ void mainLogic::logicFunction(RenderWindow& window,vector<Sprite> &sprt, vector<
 		{
 			if (Keyboard::isKeyPressed(Keyboard::Escape))
 			{
-				menuShow.menu(window,sprt,txtr,shadow,jazz,THE_WORD);
+				menuShow.menu(window, jazz);
 			}
 			if (event.type == sf::Event::Closed)
 			{
+				isLogic = false;
 				window.close();
 			}
 		}
@@ -268,7 +274,7 @@ void mainLogic::logicFunction(RenderWindow& window,vector<Sprite> &sprt, vector<
 			sprt[25].setColor(Color(200, 200, 200));
 			letter = 'Z';
 		}
-		int pos = THE_WORD.find(letter);
+		int pos = the_word.find(letter);
 		if (event.type == Event::MouseButtonReleased)
 		{
 			if (event.mouseButton.button == Mouse::Left)
@@ -278,132 +284,132 @@ void mainLogic::logicFunction(RenderWindow& window,vector<Sprite> &sprt, vector<
 					{
 						sound.play();
 						sprt[0].setColor(Color::Red);
-						matchLetter(THE_WORD, letter, used, pos, wrong, clock);
+						matchLetter(the_word, letter, used, pos, wrong, clock);
 					}
 					if (letter == 'B')
 					{
 						sound.play();
-						matchLetter(THE_WORD, letter, used, pos, wrong, clock);
+						matchLetter(the_word, letter, used, pos, wrong, clock);
 					}
 					if (letter == 'C')
 					{
 						sound.play();
-						matchLetter(THE_WORD, letter, used, pos, wrong, clock);
+						matchLetter(the_word, letter, used, pos, wrong, clock);
 					}
 					if (letter == 'D')
 					{
 						sound.play();
-						matchLetter(THE_WORD, letter, used, pos, wrong, clock);
+						matchLetter(the_word, letter, used, pos, wrong, clock);
 					}
 					if (letter == 'E')
 					{
 						sound.play();
-						matchLetter(THE_WORD, letter, used, pos, wrong, clock);
+						matchLetter(the_word, letter, used, pos, wrong, clock);
 					}
 					if (letter == 'F')
 					{
 						sound.play();
-						matchLetter(THE_WORD, letter, used, pos, wrong, clock);
+						matchLetter(the_word, letter, used, pos, wrong, clock);
 					}
 					if (letter == 'G')
 					{
 						sound.play();
-						matchLetter(THE_WORD, letter, used, pos, wrong, clock);
+						matchLetter(the_word, letter, used, pos, wrong, clock);
 					}
 					if (letter == 'H')
 					{
 						sound.play();
-						matchLetter(THE_WORD, letter, used, pos, wrong, clock);
+						matchLetter(the_word, letter, used, pos, wrong, clock);
 					}
 					if (letter == 'I')
 					{
 						sound.play();
-						matchLetter(THE_WORD, letter, used, pos, wrong, clock);
+						matchLetter(the_word, letter, used, pos, wrong, clock);
 					}
 					if (letter == 'J')
 					{
 						sound.play();
-						matchLetter(THE_WORD, letter, used, pos, wrong, clock);
+						matchLetter(the_word, letter, used, pos, wrong, clock);
 					}
 					if (letter == 'K')
 					{
 						sound.play();
-						matchLetter(THE_WORD, letter, used, pos, wrong, clock);
+						matchLetter(the_word, letter, used, pos, wrong, clock);
 					}
 					if (letter == 'L')
 					{
 						sound.play();
-						matchLetter(THE_WORD, letter, used, pos, wrong, clock);
+						matchLetter(the_word, letter, used, pos, wrong, clock);
 					}
 					if (letter == 'M')
 					{
 						sound.play();
-						matchLetter(THE_WORD, letter, used, pos, wrong, clock);
+						matchLetter(the_word, letter, used, pos, wrong, clock);
 					}
 					if (letter == 'N')
 					{
 						sound.play();
-						matchLetter(THE_WORD, letter, used, pos, wrong, clock);
+						matchLetter(the_word, letter, used, pos, wrong, clock);
 					}
 					if (letter == 'O')
 					{
 						sound.play();
-						matchLetter(THE_WORD, letter, used, pos, wrong, clock);
+						matchLetter(the_word, letter, used, pos, wrong, clock);
 					}
 					if (letter == 'P')
 					{
 						sound.play();
-						matchLetter(THE_WORD, letter, used, pos, wrong, clock);
+						matchLetter(the_word, letter, used, pos, wrong, clock);
 					}
 					if (letter == 'R')
 					{
 						sound.play();
-						matchLetter(THE_WORD, letter, used, pos, wrong, clock);
+						matchLetter(the_word, letter, used, pos, wrong, clock);
 					}
 					if (letter == 'S')
 					{
 						sound.play();
-						matchLetter(THE_WORD, letter, used, pos, wrong, clock);
+						matchLetter(the_word, letter, used, pos, wrong, clock);
 					}
 					if (letter == 'Q')
 					{
 						sound.play();
-						matchLetter(THE_WORD, letter, used, pos, wrong, clock);
+						matchLetter(the_word, letter, used, pos, wrong, clock);
 					}
 					if (letter == 'T')
 					{
 						sound.play();
-						matchLetter(THE_WORD, letter, used, pos, wrong, clock);
+						matchLetter(the_word, letter, used, pos, wrong, clock);
 					}
 					if (letter == 'U')
 					{
 						sound.play();
-						matchLetter(THE_WORD, letter, used, pos, wrong, clock);
+						matchLetter(the_word, letter, used, pos, wrong, clock);
 					}
 					if (letter == 'V')
 					{
 						sound.play();
-						matchLetter(THE_WORD, letter, used, pos, wrong, clock);
+						matchLetter(the_word, letter, used, pos, wrong, clock);
 					}
 					if (letter == 'W')
 					{
 						sound.play();
-						matchLetter(THE_WORD, letter, used, pos, wrong, clock);
+						matchLetter(the_word, letter, used, pos, wrong, clock);
 					}
 					if (letter == 'X')
 					{
 						sound.play();
-						matchLetter(THE_WORD, letter, used, pos, wrong, clock);
+						matchLetter(the_word, letter, used, pos, wrong, clock);
 					}
 					if (letter == 'Y')
 					{
 						sound.play();
-						matchLetter(THE_WORD, letter, used, pos, wrong, clock);
+						matchLetter(the_word, letter, used, pos, wrong, clock);
 					}
 					if (letter == 'Z')
 					{
 						sound.play();
-						matchLetter(THE_WORD, letter, used, pos, wrong, clock);
+						matchLetter(the_word, letter, used, pos, wrong, clock);
 					}
 				}
 				clock.restart();
