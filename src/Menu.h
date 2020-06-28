@@ -8,5 +8,5 @@ using namespace sf;
 
 class Menu {
 public:
-  void menu(RenderWindow &window, vector<Sprite> &sprt, vector<Texture> &txtr, vector<Sprite> &shadow, Music &jazz, const string &THE_WORD);
+  void menu(RenderWindow &window, Music &jazz);
 };

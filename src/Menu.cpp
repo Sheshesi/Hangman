@@ -9,13 +9,12 @@
 #include <string>
 
 using namespace sf;
-void Menu::menu(RenderWindow &window, vector<Sprite> &sprt, vector<Texture> &txtr, vector<Sprite> &shadow, Music &jazz, const string &THE_WORD) {
+void Menu::menu(RenderWindow &window, Music &jazz) {
   Font font;
   Clock clock;
   SoundBuffer buffer;
   howToButton howTo;
   options optionButton;
-  mainLogic logic;
   buffer.loadFromFile("audio/Click.ogg");
   Sound sound;
   sound.setBuffer(buffer);
@@ -116,7 +115,7 @@ void Menu::menu(RenderWindow &window, vector<Sprite> &sprt, vector<Texture> &txt
       if (event.mouseButton.button == Mouse::Left) {
         if (menuNum == 1) {
           sound.play();
-          logic.logicFunction(window,sprt,txtr,shadow,jazz,THE_WORD);
+          isMenu = false;
         }
         if (menuNum == 2) {
           sound.play();
@@ -124,8 +123,8 @@ void Menu::menu(RenderWindow &window, vector<Sprite> &sprt, vector<Texture> &txt
         }
         if (menuNum == 3) {
           sound.play();
-          window.close();
           isMenu = false;
+          window.close();
         }
         if (menuNum == 4) {
           sound.play();
