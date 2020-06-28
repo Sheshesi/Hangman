@@ -64,6 +64,29 @@ string choiseTheTheme(int themes, string* path) {
 	return *path;
 }
 
+void loadFromFile(vector<Sprite> &sprt, vector<Image> &img, vector<Texture> &txtr, vector<Sprite> &shadow) {
+	vector<string> symbol;
+	char letter = 'A';
+	int x = 600;
+	int y = 100;
+	string word[26];
+	string way = "images/Alphabet/";
+	for (int i = 0; i < MAX_SIZE; i++) {
+		word[i] = letter;
+		letter++;
+		symbol.push_back(way + word[i] + ".png");
+	}
+	for (int i = 0; i < MAX_SIZE; i++) {
+		img[i].loadFromFile(symbol[i]);
+		txtr[i].loadFromImage(img[i]);
+		txtr[i].setSmooth(true);
+		sprt[i].setTexture(txtr[i]);
+		shadow[i].setTexture(txtr[i]);
+		sprt[i].setScale(0.8, 0.8);
+		shadow[i].setScale(0.8, 0.8);
+		shadow[i].setColor(Color(0, 0, 0, 64));
+	}
+}
 
 int main() {
   RenderWindow window(VideoMode(1366, 768), "Hangman");
