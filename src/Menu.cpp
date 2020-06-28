@@ -125,6 +125,7 @@ void Menu::menu(RenderWindow &window, Music &jazz) {
           sound.play();
           isMenu = false;
           window.close();
+          exit(0);
         }
         if (menuNum == 4) {
           sound.play();
