@@ -70,7 +70,7 @@ void loadFromFile(vector<Sprite> &sprt, vector<Image> &img, vector<Texture> &txt
 	int x = 600;
 	int y = 100;
 	string word[26];
-	string way = "images/Alphabet/";
+	string way = "images/alphabet/";
 	for (int i = 0; i < MAX_SIZE; i++) {
 		word[i] = letter;
 		letter++;
