@@ -136,6 +136,6 @@ int main() {
   the_word = words[i];
   loadFromFile(sprt, txtr, shadow);
   menuShow.menu(window,jazz);
-  logic.logicFunction(window,sprt,txtr,shadow,jazz,the_word);
+  logic.logicFunction(window,sprt,txtr,shadow,jazz,the_word, path);
   return 0;
 }
