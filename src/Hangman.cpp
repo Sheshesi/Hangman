@@ -68,7 +68,6 @@ string choiseTheTheme(int num, string* path) {
 }
 
 void loadFromFile(vector<Sprite> &sprt, vector<Texture> &txtr, vector<Sprite> &shadow) {
-	cout << "Hui" << endl;
 	vector<string> symbol;
 	char letter = 'A';
 	string word[26];
