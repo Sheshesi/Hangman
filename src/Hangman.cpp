@@ -65,7 +65,7 @@ string choiseTheTheme(int num, string* path) {
 	return *path;
 }
 
-void loadFromFile(vector<Sprite> &sprt, vector<Image> &img, vector<Texture> &txtr, vector<Sprite> &shadow) {
+void loadFromFile(vector<Sprite> &sprt, vector<Texture> &txtr, vector<Sprite> &shadow) {
 	vector<string> symbol;
 	char letter = 'A';
 	string word[26];
@@ -76,8 +76,7 @@ void loadFromFile(vector<Sprite> &sprt, vector<Image> &img, vector<Texture> &txt
 		symbol.push_back(way + word[i] + ".png");
 	}
 	for (int i = 0; i < MAX_SIZE; i++) {
-		img[i].loadFromFile(symbol[i]);
-		txtr[i].loadFromImage(img[i]);
+		txtr[i].loadFromFile(symbol[i]);
 		txtr[i].setSmooth(true);
 		sprt[i].setTexture(txtr[i]);
 		shadow[i].setTexture(txtr[i]);
@@ -120,6 +119,9 @@ int main() {
   string path, str;
   ifstream themeFile;
   vector<string> words;
+  vector<Sprite> shadow(MAX_SIZE, Sprite());
+	vector<Sprite> sprt(MAX_SIZE, Sprite());
+	vector<Texture> txtr(MAX_SIZE, Texture());
   int num = 0;
   jazz.openFromFile("audio/Jazz.ogg");
   logo.ShowLogo(window);
@@ -129,5 +131,6 @@ int main() {
   choiseTheTheme(num,&path);
   themeFile.open(path);
   choiseTheWord(themeFile,&str,words);
+  loadFromFile(sprt, txtr, shadow);
   return 0;
 }
