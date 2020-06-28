@@ -7,6 +7,7 @@
 #include <fstream>
 #include <ctime>
 #include <string>
+#include "logic.hpp"
 using namespace sf;
 using namespace std;
 const int MAX_SIZE = 26; // Максимальное количество букв латинского алфавита
@@ -128,11 +129,11 @@ int main() {
   logo.ShowLogo(window);
   jazz.play();
   jazz.setLoop(true);
-  menuShow.menu(window, jazz);
   choiseTheTheme(num,&path);
   themeFile.open(path);
   choiseTheWord(themeFile,&str,words);
   const string THE_WORD = words[i];
   loadFromFile(sprt, txtr, shadow);
+  menuShow.menu(window,sprt,txtr,shadow,jazz,THE_WORD);
   return 0;
 }
