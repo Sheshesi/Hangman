@@ -62,6 +62,43 @@ int options::Option(RenderWindow &window, Music &jazz) {
     window.clear(Color(168, 154, 98));
     buttonBack.setPosition(550, 540);
     volumePath = 0;
+    if (IntRect(550, 540, 203, 105).contains(Mouse::getPosition(window))) {
+      buttonBack.setPosition(560, 550);
+      if (event.type == Event::MouseButtonReleased) {
+        if (event.mouseButton.button == Mouse::Left) {
+          click.play();
+          isOption = false;
+        }
+      }
+    }
+    if (IntRect(715, 295, 20, 20).contains(Mouse::getPosition(window))) {
+      triangle.setFillColor(Color(150, 0, 0));
+      volumePath = 1;
+    }
+    if (IntRect(715, 350, 20, 20).contains(Mouse::getPosition(window))) {
+      reverseTriangle.setFillColor(Color(150, 0, 0));
+      volumePath = 2;
+    }
+    if (event.type == Event::MouseButtonReleased) {
+      if (event.mouseButton.button == Mouse::Left) {
+        if (clock.getElapsedTime().asMilliseconds() > 50) {
+          if (volumePath == 1) {
+            click.play();
+            if (volume >= 100) {
+            } else {
+              volume += 10;
+            }
+          }
+          if (volumePath == 2) {
+            click.play();
+            if (volume > 0) {
+              volume = volume - 10;
+            }
+          }
+        }
+        clock.restart();
+      }
+    }
     window.draw(buttonBackShadow);
     window.draw(reverseTriangle);
     window.draw(triangle);
@@ -70,4 +107,5 @@ int options::Option(RenderWindow &window, Music &jazz) {
     window.draw(buttonBack);
     window.display();
   }
+  return volume;
 }
