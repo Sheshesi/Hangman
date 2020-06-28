@@ -30,7 +30,7 @@ int options::Option(RenderWindow &window, Music &jazz) {
   Text text("", font, 50);
   Text aboutVolume("Volume", font, 50);
   SoundBuffer buffer;
-  buffer.loadFromFile("Audio/Click.ogg");
+  buffer.loadFromFile("audio/Click.ogg");
   Sound click;
   click.setBuffer(buffer);
   aboutVolume.setFillColor(Color::Black);
