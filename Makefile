@@ -10,8 +10,8 @@ BIN = bin/
 BUL_TEST = build/test/
 all: $(BIN)game $(BIN)check
 
-$(BIN)game: $(BUL)Hangman.o $(BUL)logo.o $(BUL)Menu.o $(BUL)HowToPlay.o $(BUL)Options.o $(BIN)check
-	$(SS) -o $(BIN)game $(BUL)Hangman.o $(BUL)logo.o $(BUL)Menu.o $(BUL)HowToPlay.o $(BUL)Options.o $(SFML)
+$(BIN)game: $(BUL)Hangman.o $(BUL)logo.o $(BUL)Menu.o $(BUL)HowToPlay.o $(BUL)Options.o $(BUL)logic.o $(BIN)check 
+	$(SS) -o $(BIN)game $(BUL)Hangman.o $(BUL)logo.o $(BUL)Menu.o $(BUL)HowToPlay.o $(BUL)Options.o $(BUL)logic.o $(SFML)
 
 $(BUL)Hangman.o: $(SR)Hangman.cpp
 	$(SS) $(SSFLAGS) -I $(SR) -c $(SR)Hangman.cpp -o $(BUL)Hangman.o $(SFML)
@@ -28,6 +28,8 @@ $(BUL)HowToPlay.o: $(SR)HowToPlay.cpp
 $(BUL)Options.o: $(SR)Options.cpp
 	$(SS) $(SSFLAGS) -I $(SR) -c $(SR)Options.cpp -o $(BUL)Options.o $(SFML)
 
+$(BUL)logic.o: $(SR)logic.cpp
+	$(SS) $(SSFLAGS) -I $(SR) -c $(SR)logic.cpp -o $(BUL)logic.o $(SFML)
 
 $(BIN)check: $(BUL_TEST)logo_test.o $(BUL)logo.o
 	$(SS) $(BUL_TEST)logo_test.o $(BUL)logo.o -o $(BIN)check $(SFML)
