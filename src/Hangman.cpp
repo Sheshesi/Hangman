@@ -8,21 +8,22 @@
 #include <ctime>
 #include <string>
 #include "logic.hpp"
+#include <iostream>
 using namespace sf;
 using namespace std;
 const int MAX_SIZE = 26; // Максимальное количество букв латинского алфавита
 const int MAX_WORDS = 20; // Максимальное количество слов в текстовых файлах
 
 struct themesChoise{
-  string themeOne = "Character";
-  string themeTwo = "Sport";
-  string themeThree = "Plants";
-  string themeFour = "Economy";
-  string themeFive = "Instruments";
-  string themeSix = "Transport";
-  string themeSeven = "Profession";
-  string themeEight = "Locations";
-  string themeNine = "Animals";
+  	string themeOne = "Character";
+  	string themeTwo = "Sport";
+  	string themeThree = "Plants";
+ 	string themeFour = "Economy";
+  	string themeFive = "Instruments";
+  	string themeSix = "Transport";
+  	string themeSeven = "Profession";
+  	string themeEight = "Locations";
+  	string themeNine = "Animals";
 }themeNumber;
 
 string choiseTheTheme(int num, string* path) {
@@ -67,16 +68,17 @@ string choiseTheTheme(int num, string* path) {
 }
 
 void loadFromFile(vector<Sprite> &sprt, vector<Texture> &txtr, vector<Sprite> &shadow) {
+	cout << "Hui" << endl;
 	vector<string> symbol;
 	char letter = 'A';
 	string word[26];
 	string way = "images/alphabet/";
-	for (int i = 0; i < MAX_SIZE; i++) {
+	for (unsigned int i = 0; i < MAX_SIZE; i++) {
 		word[i] = letter;
 		letter++;
 		symbol.push_back(way + word[i] + ".png");
 	}
-	for (int i = 0; i < MAX_SIZE; i++) {
+	for (unsigned int i = 0; i < MAX_SIZE; i++) {
 		txtr[i].loadFromFile(symbol[i]);
 		txtr[i].setSmooth(true);
 		sprt[i].setTexture(txtr[i]);
@@ -87,24 +89,22 @@ void loadFromFile(vector<Sprite> &sprt, vector<Texture> &txtr, vector<Sprite> &s
 	}
 }
 
-int choiseTheWord(ifstream &themeFile, string * str, vector<string> words){
+void choiseTheWord(ifstream &themeFile, string str, vector<string> &words){
   int i = 0;
   if (!themeFile.is_open())
 	{
-		return 0;
+		exit(0);
 	}
 	else
 	{
 		while (!themeFile.eof())
 		{
-			*str = "";
-			getline(themeFile, *str);
-			words.push_back(*str);
+			str = "";
+			getline(themeFile, str);
+			words.push_back(str);
 			i++;
 		}
-		i = rand() % 20;
 	}
-  return i;
 }
 
 int main() {
@@ -116,24 +116,26 @@ int main() {
   Sound sound;
   Sound clap;
   Menu menuShow;
+  mainLogic logic;
   SoundBuffer buffer, buffer2;
-  string path, str;
+  string path, str, the_word;
   ifstream themeFile;
   vector<string> words;
   vector<Sprite> shadow(MAX_SIZE, Sprite());
-	vector<Sprite> sprt(MAX_SIZE, Sprite());
-	vector<Texture> txtr(MAX_SIZE, Texture());
+  vector<Sprite> sprt(MAX_SIZE, Sprite());
+  vector<Texture> txtr(MAX_SIZE, Texture());
   int num = 0;
-  int i = 0;
+  int i = rand()% 20;
   jazz.openFromFile("audio/Jazz.ogg");
   logo.ShowLogo(window);
   jazz.play();
   jazz.setLoop(true);
   choiseTheTheme(num,&path);
   themeFile.open(path);
-  choiseTheWord(themeFile,&str,words);
-  const string THE_WORD = words[i];
+  choiseTheWord(themeFile,str,words);
+  the_word = words[i];
   loadFromFile(sprt, txtr, shadow);
-  menuShow.menu(window,sprt,txtr,shadow,jazz,THE_WORD);
+  menuShow.menu(window,jazz);
+  logic.logicFunction(window,sprt,txtr,shadow,jazz,the_word);
   return 0;
 }
