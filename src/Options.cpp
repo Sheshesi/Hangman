@@ -35,9 +35,13 @@ int options::Option(RenderWindow &window, Music &jazz) {
   click.setBuffer(buffer);
   aboutVolume.setFillColor(Color::Black);
   aboutVolume.setPosition(550, 300);
+  std::ostringstream setVolume;
   text.setFillColor(Color::Black);
   text.setPosition(700, 300);
+  setVolume << volume;
+  bool flagForMusic = true;
   Clock clock;
+  int volumePath;
   while (isOption) {
     Event event;
     while (window.pollEvent(event)) {
@@ -45,6 +49,19 @@ int options::Option(RenderWindow &window, Music &jazz) {
         isOption = false;
       }
     }
+    Text text("", font, 50);
+    std::ostringstream setVolume;
+    setVolume << volume;
+    triangle.setFillColor(Color::Red);
+    reverseTriangle.setFillColor(Color::Red);
+    text.setString(setVolume.str());
+    text.setFillColor(Color::Black);
+    text.setPosition(700, 300);
+    jazz.setVolume(volume);
+    bool press = false;
+    window.clear(Color(168, 154, 98));
+    buttonBack.setPosition(550, 540);
+    volumePath = 0;
     window.draw(buttonBackShadow);
     window.draw(reverseTriangle);
     window.draw(triangle);
