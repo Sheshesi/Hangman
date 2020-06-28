@@ -1,4 +1,6 @@
+#include "HowToPlay.h"
 #include "Menu.h"
+#include "Options.h"
 #include "SFML/Audio.hpp"
 #include "SFML/Graphics.hpp"
 #include <iostream>
@@ -8,15 +10,13 @@ void Menu::menu(RenderWindow &window, Music &jazz) {
   Font font;
   Clock clock;
   SoundBuffer buffer;
+  howToButton howTo;
+  options optionButton;
   buffer.loadFromFile("audio/Click.ogg");
   Sound sound;
   sound.setBuffer(buffer);
   font.loadFromFile("19183.ttf");
-  Text text("Author: Shegross\n Version(0.1)", font);
-  text.setCharacterSize(30);
-  text.setStyle(sf::Text::Regular);
-  text.setFillColor(Color::White);
-  text.setPosition(1100, 680);
+  Text text();
   Texture newGame, howToPlay, Quit, aboutMenu, titleTexture, hangTexture,
       manTexture, shadowTexture, options;
   manTexture.loadFromFile("images/hang/man.png");
@@ -116,6 +116,7 @@ void Menu::menu(RenderWindow &window, Music &jazz) {
         }
         if (menuNum == 2) {
           sound.play();
+          howTo.HowToPlay(window);
         }
         if (menuNum == 3) {
           sound.play();
@@ -124,13 +125,13 @@ void Menu::menu(RenderWindow &window, Music &jazz) {
         }
         if (menuNum == 4) {
           sound.play();
+          optionButton.Option(window, jazz);
         }
       }
     }
     window.draw(HangSprite);
     window.draw(ShadowSprite);
     window.draw(TitleSprite);
-    window.draw(text);
     window.draw(shadowButtonNG);
     window.draw(shadowButtonHTP);
     window.draw(shadowButtonQ);
@@ -140,7 +141,6 @@ void Menu::menu(RenderWindow &window, Music &jazz) {
     window.draw(ButtonQ);
     window.draw(ButtonO);
     window.draw(ManSprite);
-
     window.display();
   }
 }
