@@ -1,5 +1,6 @@
 #include "HowToPlay.h"
 #include "Menu.h"
+#include "Options.h"
 #include "SFML/Audio.hpp"
 #include "SFML/Graphics.hpp"
 #include <iostream>
@@ -10,6 +11,7 @@ void Menu::menu(RenderWindow &window, Music &jazz) {
   Clock clock;
   SoundBuffer buffer;
   howToButton howTo;
+  options optionButton;
   buffer.loadFromFile("audio/Click.ogg");
   Sound sound;
   sound.setBuffer(buffer);
@@ -123,6 +125,7 @@ void Menu::menu(RenderWindow &window, Music &jazz) {
         }
         if (menuNum == 4) {
           sound.play();
+          optionButton.Option(window, jazz);
         }
       }
     }
