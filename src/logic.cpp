@@ -7,6 +7,7 @@
 using namespace sf;
 using namespace std;
 const int MAX_SIZE = 26; // Максимальное количество букв латинского алфавита
+const int MAX_WRONG = 6;	//Максимальное количество допустимых ошибок
 
 void matchLetter(string &the_word, char &letter, string &used, int &pos, int &wrong, Clock &clock) {
 	if (the_word.find(letter) != string::npos)
@@ -55,6 +56,12 @@ void mainLogic::logicFunction(RenderWindow& window,vector<Sprite> &sprt, vector<
     ropeSprite.setTexture(rope);
     manSprite.setTexture(man);
     backgroundSprite.setTexture(backgroundTexture);
+	hangPartSprite_1.setPosition(97, 180);
+	hangPartSprite_2.setPosition(70, 180);
+	hangPartSprite_3.setPosition(70, 385);
+	hangPartSprite_4.setPosition(70, 510);
+	ropeSprite.setPosition(287, 170);
+	manSprite.setPosition(282, 245);
     ropeSprite.setScale(0.8, 0.8);
     manSprite.setScale(0.8, 0.8);
     hangPartSprite_1.setScale(0.8, 0.8);
@@ -74,6 +81,7 @@ void mainLogic::logicFunction(RenderWindow& window,vector<Sprite> &sprt, vector<
 	float y = 100;
     int wrong = 0;
     bool isLogic = true;
+	bool draw_1 = false, draw_2 = false, draw_3 = false, draw_4 = false, draw_5 = false, draw_6 = false;
     while (isLogic)
 	{
 		window.clear(Color::Black);
@@ -419,11 +427,65 @@ void mainLogic::logicFunction(RenderWindow& window,vector<Sprite> &sprt, vector<
 			}
 		}
 		wordToDisplay.setString(used);
+		if (wrong > MAX_WRONG)
+		{
+			isLogic = false;
+			menuShow.menu(window, jazz);
+			window.close();
+		}
 		for (int i = 0; i < MAX_SIZE; i++) {
 			window.draw(shadow[i]);
 		}
 		for (int i = 0; i < MAX_SIZE; i++) {
 			window.draw(sprt[i]);
+		}
+		if (wrong == 1)
+		{
+			draw_1 = true;
+		}
+		if (wrong == 2)
+		{
+			draw_2 = true;
+		}
+		if (wrong == 3)
+		{
+			draw_3 = true;
+		}
+		if (wrong == 4)
+		{
+			draw_4 = true;
+		}
+		if (wrong == 5)
+		{
+			draw_5 = true;
+		}
+		if (wrong == 6)
+		{
+			draw_6 = true;
+		}
+		if (draw_5)
+		{
+			window.draw(ropeSprite);
+		}
+		if (draw_6)
+		{
+			window.draw(manSprite);
+		}
+		if (draw_3)
+		{
+			window.draw(hangPartSprite_3);
+		}
+		if (draw_2)
+		{
+			window.draw(hangPartSprite_2);
+		}
+		if (draw_4)
+		{
+			window.draw(hangPartSprite_1);
+		}
+		if (draw_1)
+		{
+			window.draw(hangPartSprite_4);
 		}
 		window.draw(theme);
 		window.draw(wordToDisplay);
