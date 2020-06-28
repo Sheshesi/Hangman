@@ -35,6 +35,10 @@ void mainLogic::logicFunction(RenderWindow& window,vector<Sprite> &sprt, vector<
     Sound sound, clap;
 	SoundBuffer buffer, buffer_2;
 	Font font;
+	buffer_2.loadFromFile("audio/Clap.ogg");
+	buffer.loadFromFile("audio/Click.ogg");
+	clap.setBuffer(buffer_2);
+	sound.setBuffer(buffer);
 	font.loadFromFile("19183.ttf");
     hangPart_1.loadFromFile("images/hang/1 board.png");
     hangPart_2.loadFromFile("images/hang/2 board.png");
@@ -103,14 +107,12 @@ void mainLogic::logicFunction(RenderWindow& window,vector<Sprite> &sprt, vector<
 		x = 600;
 		for (int i = 0; i < 7; i++) {   //Выстраивание первого ряда букв
 			sprt[i].setPosition(x, y);
-			sprt[i].setColor(Color::White);
 			shadow[i].setPosition(x + 10, y + 10);
 			x += 100;
 		}
 		x = 600;
 		for (int i = 7; i < 14; i++) {  //Выстраивание второго ряда букв
 			sprt[i].setPosition(x, y + 100);
-			sprt[i].setColor(Color::White);
 			shadow[i].setPosition(x + 10, y + 110);
 			x += 100;
 		}
@@ -118,171 +120,143 @@ void mainLogic::logicFunction(RenderWindow& window,vector<Sprite> &sprt, vector<
 		for (int i = 14; i < 21; i++)   //Выстраивание третьего ряда букв
 		{
 			sprt[i].setPosition(x, y + 200);
-			sprt[i].setColor(Color::White);
 			shadow[i].setPosition(x + 10, y + 210);
 			x += 100;
 		}
 		x = 700;
 		for (int i = 21; i < 26; i++) { //Выстраивание четвертого ряда букв
 			sprt[i].setPosition(x, y + 300);
-			sprt[i].setColor(Color::White);
 			shadow[i].setPosition(x + 10, y + 310);
 			x += 100;
 		}
 		if (IntRect(600, 100, 50, 70).contains(Mouse::getPosition(window)))
 		{
 			sprt[0].setPosition(610, 110);
-			sprt[0].setColor(Color(200, 200, 200));
 			letter = 'a';
 		}
 		if (IntRect(700, 100, 50, 70).contains(Mouse::getPosition(window)))
 		{
 			sprt[1].setPosition(710, 110);
-			sprt[1].setColor(Color(200, 200, 200));
 			letter = 'b';
 		}
 		if (IntRect(800, 100, 50, 70).contains(Mouse::getPosition(window)))
 		{
 			sprt[2].setPosition(810, 110);
-			sprt[2].setColor(Color(200, 200, 200));
 			letter = 'c';
 		}
 		if (IntRect(900, 100, 50, 70).contains(Mouse::getPosition(window)))
 		{
 			sprt[3].setPosition(910, 110);
-			sprt[3].setColor(Color(200, 200, 200));
 			letter = 'd';
 		}
 		if (IntRect(1000, 100, 50, 70).contains(Mouse::getPosition(window)))
 		{
 			sprt[4].setPosition(1010, 110);
-			sprt[4].setColor(Color(200, 200, 200));
 			letter = 'e';
 		}
 		if (IntRect(1100, 100, 50, 70).contains(Mouse::getPosition(window)))
 		{
 			sprt[5].setPosition(1110, 110);
-			sprt[5].setColor(Color(200, 200, 200));
 			letter = 'f';
 		}
 		if (IntRect(1200, 100, 50, 70).contains(Mouse::getPosition(window)))
 		{
 			sprt[6].setPosition(1210, 110);
-			sprt[6].setColor(Color(200, 200, 200));
 			letter = 'g';
 		}
 		if (IntRect(600, 200, 50, 70).contains(Mouse::getPosition(window)))
 		{
 			sprt[7].setPosition(610, 210);
-			sprt[7].setColor(Color(200, 200, 200));
 			letter = 'h';
 		}
 		if (IntRect(700, 200, 50, 70).contains(Mouse::getPosition(window)))
 		{
 			sprt[8].setPosition(710, 210);
-			sprt[8].setColor(Color(200, 200, 200));
 			letter = 'i';
 		}
 		if (IntRect(800, 200, 50, 70).contains(Mouse::getPosition(window)))
 		{
 			sprt[9].setPosition(810, 210);
-			sprt[9].setColor(Color(200, 200, 200));
 			letter = 'j';
 		}
 		if (IntRect(900, 200, 50, 70).contains(Mouse::getPosition(window)))
 		{
 			sprt[10].setPosition(910, 210);
-			sprt[10].setColor(Color(200, 200, 200));
 			letter = 'k';
 		}
 		if (IntRect(1000, 200, 50, 70).contains(Mouse::getPosition(window)))
 		{
 			sprt[11].setPosition(1010, 210);
-			sprt[11].setColor(Color(200, 200, 200));
 			letter = 'l';
 		}
 		if (IntRect(1100, 200, 50, 70).contains(Mouse::getPosition(window)))
 		{
 			sprt[12].setPosition(1110, 210);
-			sprt[12].setColor(Color(200, 200, 200));
 			letter = 'm';
 		}
 		if (IntRect(1200, 200, 50, 70).contains(Mouse::getPosition(window)))
 		{
 			sprt[13].setPosition(1210, 210);
-			sprt[13].setColor(Color(200, 200, 200));
 			letter = 'n';
 		}
 		if (IntRect(600, 300, 50, 70).contains(Mouse::getPosition(window)))
 		{
 			sprt[14].setPosition(610, 310);
-			sprt[14].setColor(Color(200, 200, 200));
 			letter = 'o';
 		}
 		if (IntRect(700, 300, 50, 70).contains(Mouse::getPosition(window)))
 		{
 			sprt[15].setPosition(710, 310);
-			sprt[15].setColor(Color(200, 200, 200));
 			letter = 'p';
 		}
 		if (IntRect(800, 300, 50, 70).contains(Mouse::getPosition(window)))
 		{
 			sprt[16].setPosition(810, 310);
-			sprt[16].setColor(Color(200, 200, 200));
 			letter = 'q';
 		}
 		if (IntRect(900, 300, 50, 70).contains(Mouse::getPosition(window)))
 		{
 			sprt[17].setPosition(910, 310);
-			sprt[17].setColor(Color(200, 200, 200));
 			letter = 'r';
 		}
 		if (IntRect(1000, 300, 50, 70).contains(Mouse::getPosition(window)))
 		{
 			sprt[18].setPosition(1010, 310);
-			sprt[18].setColor(Color(200, 200, 200));
 			letter = 's';
 		}
 		if (IntRect(1100, 300, 50, 70).contains(Mouse::getPosition(window)))
 		{
 			sprt[19].setPosition(1110, 310);
-			sprt[19].setColor(Color(200, 200, 200));
 			letter = 't';
 		}
 		if (IntRect(1200, 300, 50, 70).contains(Mouse::getPosition(window)))
 		{
 			sprt[20].setPosition(1210, 310);
-			sprt[20].setColor(Color(200, 200, 200));
 			letter = 'u';
 		}
 		if (IntRect(700, 400, 50, 70).contains(Mouse::getPosition(window)))
 		{
 			sprt[21].setPosition(710, 410);
-			sprt[21].setColor(Color(200, 200, 200));
 			letter = 'v';
 		}
 		if (IntRect(800, 400, 50, 70).contains(Mouse::getPosition(window)))
 		{
 			sprt[22].setPosition(810, 410);
-			sprt[22].setColor(Color(200, 200, 200));
 			letter = 'w';
 		}
 		if (IntRect(900, 400, 50, 70).contains(Mouse::getPosition(window)))
 		{
 			sprt[23].setPosition(910, 410);
-			sprt[23].setColor(Color(200, 200, 200));
 			letter = 'x';
 		}
 		if (IntRect(1000, 400, 50, 70).contains(Mouse::getPosition(window)))
 		{
 			sprt[24].setPosition(1010, 410);
-			sprt[24].setColor(Color(200, 200, 200));
 			letter = 'y';
 		}
 		if (IntRect(1100, 400, 50, 70).contains(Mouse::getPosition(window)))
 		{
 			sprt[25].setPosition(1110, 410);
-			sprt[25].setColor(Color(200, 200, 200));
 			letter = 'z';
 		}
 		int pos = the_word.find(letter);
@@ -300,126 +274,151 @@ void mainLogic::logicFunction(RenderWindow& window,vector<Sprite> &sprt, vector<
 					if (letter == 'b')
 					{
 						sound.play();
+						sprt[1].setColor(Color::Red);
 						matchLetter(the_word, letter, used, pos, wrong, clock);
 					}
 					if (letter == 'c')
 					{
 						sound.play();
+						sprt[2].setColor(Color::Red);
 						matchLetter(the_word, letter, used, pos, wrong, clock);
 					}
 					if (letter == 'd')
 					{
 						sound.play();
+						sprt[3].setColor(Color::Red);
 						matchLetter(the_word, letter, used, pos, wrong, clock);
 					}
 					if (letter == 'e')
 					{
 						sound.play();
+						sprt[4].setColor(Color::Red);
 						matchLetter(the_word, letter, used, pos, wrong, clock);
 					}
 					if (letter == 'f')
 					{
 						sound.play();
+						sprt[5].setColor(Color::Red);
 						matchLetter(the_word, letter, used, pos, wrong, clock);
 					}
 					if (letter == 'g')
 					{
 						sound.play();
+						sprt[6].setColor(Color::Red);
 						matchLetter(the_word, letter, used, pos, wrong, clock);
 					}
 					if (letter == 'h')
 					{
 						sound.play();
+						sprt[7].setColor(Color::Red);
 						matchLetter(the_word, letter, used, pos, wrong, clock);
 					}
 					if (letter == 'i')
 					{
 						sound.play();
+						sprt[8].setColor(Color::Red);
 						matchLetter(the_word, letter, used, pos, wrong, clock);
 					}
 					if (letter == 'j')
 					{
 						sound.play();
+						sprt[9].setColor(Color::Red);
 						matchLetter(the_word, letter, used, pos, wrong, clock);
 					}
 					if (letter == 'k')
 					{
 						sound.play();
+						sprt[10].setColor(Color::Red);
 						matchLetter(the_word, letter, used, pos, wrong, clock);
 					}
 					if (letter == 'l')
 					{
 						sound.play();
+						sprt[11].setColor(Color::Red);
 						matchLetter(the_word, letter, used, pos, wrong, clock);
 					}
 					if (letter == 'm')
 					{
 						sound.play();
+						sprt[12].setColor(Color::Red);
 						matchLetter(the_word, letter, used, pos, wrong, clock);
 					}
 					if (letter == 'n')
 					{
 						sound.play();
+						sprt[13].setColor(Color::Red);
 						matchLetter(the_word, letter, used, pos, wrong, clock);
 					}
 					if (letter == 'o')
 					{
 						sound.play();
+						sprt[14].setColor(Color::Red);
 						matchLetter(the_word, letter, used, pos, wrong, clock);
 					}
 					if (letter == 'p')
 					{
 						sound.play();
-						matchLetter(the_word, letter, used, pos, wrong, clock);
-					}
-					if (letter == 'r')
-					{
-						sound.play();
-						matchLetter(the_word, letter, used, pos, wrong, clock);
-					}
-					if (letter == 's')
-					{
-						sound.play();
+						sprt[15].setColor(Color::Red);
 						matchLetter(the_word, letter, used, pos, wrong, clock);
 					}
 					if (letter == 'q')
 					{
 						sound.play();
+						sprt[16].setColor(Color::Red);
+						matchLetter(the_word, letter, used, pos, wrong, clock);
+					}
+					if (letter == 'r')
+					{
+						sound.play();
+						sprt[17].setColor(Color::Red);
+						matchLetter(the_word, letter, used, pos, wrong, clock);
+					}
+					if (letter == 's')
+					{
+						sound.play();
+						sprt[18].setColor(Color::Red);
 						matchLetter(the_word, letter, used, pos, wrong, clock);
 					}
 					if (letter == 't')
 					{
 						sound.play();
+						sprt[19].setColor(Color::Red);
 						matchLetter(the_word, letter, used, pos, wrong, clock);
 					}
 					if (letter == 'u')
 					{
 						sound.play();
+						sprt[20].setColor(Color::Red);
 						matchLetter(the_word, letter, used, pos, wrong, clock);
 					}
 					if (letter == 'v')
 					{
 						sound.play();
+						sprt[21].setColor(Color::Red);
 						matchLetter(the_word, letter, used, pos, wrong, clock);
 					}
 					if (letter == 'w')
 					{
 						sound.play();
+						sprt[22].setColor(Color::Red);
 						matchLetter(the_word, letter, used, pos, wrong, clock);
 					}
 					if (letter == 'x')
 					{
 						sound.play();
+						sprt[23].setColor(Color::Red);
 						matchLetter(the_word, letter, used, pos, wrong, clock);
 					}
 					if (letter == 'y')
 					{
 						sound.play();
+						sprt[24].setColor(Color::Red);
 						matchLetter(the_word, letter, used, pos, wrong, clock);
 					}
 					if (letter == 'z')
 					{
 						sound.play();
+						sprt[25].setColor(Color::Red);
 						matchLetter(the_word, letter, used, pos, wrong, clock);
 					}
 				}
