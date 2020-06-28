@@ -9,7 +9,8 @@
 #include <string>
 using namespace sf;
 using namespace std;
-const int MAX_SIZE = 26;
+const int MAX_SIZE = 26; // Максимальное количество букв латинского алфавита
+const int MAX_WORDS = 20; // Максимальное количество слов в текстовых файлах
 
 struct themesChoise{
   string themeOne = "Character";
@@ -85,7 +86,27 @@ void loadFromFile(vector<Sprite> &sprt, vector<Image> &img, vector<Texture> &txt
 		shadow[i].setColor(Color(0, 0, 0, 64));
 	}
 }
- 
+
+int choiseTheWord(ifstream &themeFile, string * str, vector<string> words){
+  int i = 0;
+  if (!themeFile.is_open())
+	{
+		return 0;
+	}
+	else
+	{
+		while (!themeFile.eof())
+		{
+			*str = "";
+			getline(themeFile, *str);
+			words.push_back(*str);
+			i++;
+		}
+		i = rand() % 20;
+	}
+  return i;
+}
+
 int main() {
   RenderWindow window(VideoMode(1366, 768), "Hangman");
   srand((unsigned)time(NULL));
@@ -96,13 +117,17 @@ int main() {
   Sound clap;
   Menu menuShow;
   SoundBuffer buffer, buffer2;
-  string path;
-  int num;
+  string path, str;
+  ifstream themeFile;
+  vector<string> words;
+  int num = 0;
   jazz.openFromFile("audio/Jazz.ogg");
   logo.ShowLogo(window);
   jazz.play();
   jazz.setLoop(true);
   menuShow.menu(window, jazz);
   choiseTheTheme(num,&path);
+  themeFile.open(path);
+  choiseTheWord(themeFile,&str,words);
   return 0;
 }
