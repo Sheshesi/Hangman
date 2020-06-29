@@ -4,10 +4,107 @@
 #include <algorithm>
 #include "logic.hpp"
 #include "Menu.h"
+#include <fstream>
+#include <string>
+#include <vector>
+#include <ctime>
 using namespace sf;
 using namespace std;
 const int MAX_SIZE = 26; // Максимальное количество букв латинского алфавита
 const int MAX_WRONG = 6;	//Максимальное количество допустимых ошибок
+
+struct themesChoise{
+  	string themeOne = "Character";
+  	string themeTwo = "Sport";
+  	string themeThree = "Plants";
+ 	string themeFour = "Economy";
+  	string themeFive = "Instruments";
+  	string themeSix = "Transport";
+  	string themeSeven = "Profession";
+  	string themeEight = "Locations";
+  	string themeNine = "Animals";
+}themeNumber;
+
+string choiseTheTheme(int num, string* path) {
+	num = rand() % 9 + 1;
+	if (num == 1)
+	{
+		*path = themeNumber.themeOne;
+	}
+	if (num == 2)
+	{
+		*path = themeNumber.themeTwo;
+	}
+	if (num == 3)
+	{
+		*path = themeNumber.themeThree;
+	}
+	if (num == 4)
+	{
+		*path = themeNumber.themeFour;
+	}
+	if (num == 5)
+	{
+		*path = themeNumber.themeFive;
+	}
+	if (num == 6)
+	{
+		*path = themeNumber.themeSix;
+	}
+	if (num == 7)
+	{
+		*path = themeNumber.themeSeven;
+	}
+	if (num == 8)
+	{
+		*path = themeNumber.themeEight;
+	}
+	if (num == 9)
+	{
+		*path = themeNumber.themeNine;
+	}
+	return *path;
+}
+
+void loadFromFile(vector<Sprite> &sprt, vector<Texture> &txtr, vector<Sprite> &shadow) {
+	vector<string> symbol;
+	char letter = 'A';
+	string word[26];
+	string way = "images/alphabet/";
+	for (unsigned int i = 0; i < MAX_SIZE; i++) {
+		word[i] = letter;
+		letter++;
+		symbol.push_back(way + word[i] + ".png");
+	}
+	for (unsigned int i = 0; i < MAX_SIZE; i++) {
+		txtr[i].loadFromFile(symbol[i]);
+		txtr[i].setSmooth(true);
+		sprt[i].setTexture(txtr[i]);
+		shadow[i].setTexture(txtr[i]);
+		sprt[i].setScale(0.8, 0.8);
+		sprt[i].setColor(Color::White);
+		shadow[i].setScale(0.8, 0.8);
+		shadow[i].setColor(Color(0, 0, 0, 64));
+	}
+}
+
+void choiseTheWord(ifstream &themeFile, string str, vector<string> &words){
+  int i = 0;
+  if (!themeFile.is_open())
+	{
+		exit(0);
+	}
+	else
+	{
+		while (!themeFile.eof())
+		{
+			str = "";
+			getline(themeFile, str);
+			words.push_back(str);
+			i++;
+		}
+	}
+}
 
 void matchLetter(string &the_word, char &letter, string &used, int &pos, int &wrong, Clock &clock) {
 	if (the_word.find(letter) != string::npos)
@@ -27,7 +124,7 @@ void matchLetter(string &the_word, char &letter, string &used, int &pos, int &wr
 	clock.restart();
 }
 
-void mainLogic::logicFunction(RenderWindow& window,vector<Sprite> &sprt, vector<Texture> &txtr, vector<Sprite> &shadow, Music &jazz, string &the_word, string &path){
+void mainLogic::logicFunction(RenderWindow& window,vector<Sprite> &sprt, vector<Texture> &txtr, vector<Sprite> &shadow, Music &jazz, string &the_word, string &path, int num, ifstream &themeFile, string str, vector<string> &words){
     Texture hangPart_1, hangPart_2, hangPart_3, hangPart_4, rope, man, backgroundTexture;
     Sprite hangPartSprite_1, hangPartSprite_2, hangPartSprite_3, hangPartSprite_4, ropeSprite, manSprite, backgroundSprite;
     Clock clock;
@@ -35,6 +132,13 @@ void mainLogic::logicFunction(RenderWindow& window,vector<Sprite> &sprt, vector<
     Sound sound, clap;
 	SoundBuffer buffer, buffer_2;
 	Font font;
+	srand((unsigned)time(NULL));
+	int i = rand () % 20;
+	choiseTheTheme(num,&path);
+  	themeFile.open(path);
+  	choiseTheWord(themeFile,str,words);
+  	the_word = words[i];
+  	loadFromFile(sprt, txtr, shadow);
 	buffer_2.loadFromFile("audio/Clap.ogg");
 	buffer.loadFromFile("audio/Click.ogg");
 	clap.setBuffer(buffer_2);
@@ -96,7 +200,7 @@ void mainLogic::logicFunction(RenderWindow& window,vector<Sprite> &sprt, vector<
 		{
 			if (Keyboard::isKeyPressed(Keyboard::Escape))
 			{
-				menuShow.menu(window, jazz);
+				menuShow.menu(window,sprt,txtr,shadow,jazz,the_word, path,num,themeFile,str,words);
 			}
 			if (event.type == sf::Event::Closed)
 			{
@@ -429,7 +533,7 @@ void mainLogic::logicFunction(RenderWindow& window,vector<Sprite> &sprt, vector<
 		if (wrong > MAX_WRONG)
 		{
 			isLogic = false;
-			menuShow.menu(window, jazz);
+			menuShow.menu(window,sprt,txtr,shadow,jazz,the_word, path,num,themeFile,str,words);
 			window.close();
 		}
 		for (int i = 0; i < MAX_SIZE; i++) {
