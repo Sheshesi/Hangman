@@ -12,7 +12,6 @@
 using namespace sf;
 using namespace std;
 const int MAX_SIZE = 26; // Максимальное количество букв латинского алфавита
-const int MAX_WORDS = 20; // Максимальное количество слов в текстовых файлах
 
 int main()
 {
