@@ -2,6 +2,7 @@
 #include "SFML/Audio.hpp"
 #include "SFML/Graphics.hpp"
 using namespace sf;
+using namespace std;
 
 void howToButton::HowToPlay(RenderWindow &window) {
   Texture backButton, backButtonShadow;

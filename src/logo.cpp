@@ -2,6 +2,7 @@
 #include "SFML/Graphics.hpp"
 #include "logo.hpp"
 using namespace sf;
+using namespace std;
 void Logo::ShowLogo(RenderWindow &window) {
   Music music;
   Texture titleTexture;

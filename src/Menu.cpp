@@ -8,6 +8,7 @@
 #include <string>
 #include <vector>
 using namespace sf;
+using namespace std;
 void Menu::menu(RenderWindow &window, vector<Sprite> &sprt,
                 vector<Texture> &txtr, vector<Sprite> &shadow, Music &jazz,
                 string &the_word, string &path, int num, ifstream &themeFile,
