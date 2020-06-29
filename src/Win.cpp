@@ -12,4 +12,9 @@ bool winWindow::Win(RenderWindow& window) {
 	Wind.loadFromImage(wind);
 	Yes.loadFromImage(yes);
 	No.loadFromImage(no);
+    Sprite WIND, YES, NO;
+	WIND.setTexture(Wind);
+	YES.setTexture(Yes);
+	NO.setTexture(No);
+	WIND.setPosition(450, 240);
 }
