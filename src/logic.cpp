@@ -1,5 +1,6 @@
 #include "Menu.hpp"
 #include "logic.hpp"
+#include "Win.hpp"
 #include <SFML/Audio.hpp>
 #include <SFML/Graphics.hpp>
 #include <algorithm>
@@ -121,6 +122,7 @@ void mainLogic::logicFunction(RenderWindow &window, vector<Sprite> &sprt,
   Sound sound, clap;
   SoundBuffer buffer, buffer_2;
   Font font;
+  winWindow win;
   srand((unsigned)time(NULL));
   int i = rand() % 20;
   choiseTheTheme(num, &path);
@@ -467,7 +469,30 @@ void mainLogic::logicFunction(RenderWindow &window, vector<Sprite> &sprt,
       isLogic = false;
       menuShow.menu(window, sprt, txtr, shadow, jazz, the_word, path, num,
                     themeFile, str, words);
-      window.close();
+    }
+    if (used == the_word) {
+      isLogic = false;
+      clap.play();
+			used += " ";
+			FloatRect fRect = wordToDisplay.getLocalBounds();
+			wordToDisplay.setOrigin(fRect.left + fRect.width / 2.0f,
+				fRect.top + fRect.height / 2.0f);
+			wordToDisplay.setPosition(window.getSize().x / 2, window.getSize().y / 2);
+			while (clock.getElapsedTime().asMilliseconds() < 3000) {
+				window.clear(Color(168, 154, 98));
+				window.draw(wordToDisplay);
+				window.display();
+			}
+			if (win.Win(window))
+			{
+        logicFunction(window, sprt, txtr, shadow, jazz, the_word, path,
+                               num, themeFile, str, words);
+				window.close();
+			}
+			else
+			{
+				window.close();
+			}
     }
     for (int i = 0; i < MAX_SIZE; i++) {
       window.draw(shadow[i]);
