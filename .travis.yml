@@ -4,19 +4,7 @@ sudo: required
 language: cpp
 compiler: g++
 before_install:
-  - sudo apt-get -y install libgl1-mesa-dev
-  - sudo apt-get -y install libopenal-dev
-  - sudo apt-get -y install libjpeg-dev
-  - sudo apt-get -y install libudev-dev
-  - sudo apt-get -y install libxrandr-dev
-  - sudo apt-get -y install libfreetype6-dev
-  - sudo apt-get -y install libvorbis-dev
-  - sudo apt-get -y install libflac-dev
-  - echo 'deb http://ftp.de.debian.org/debian sid main' |sudo tee -a /etc/apt/sources.list
-  - sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 04EE7237B7D453EC
-  - sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 648ACFD622F3D138
-  - sudo apt update
-  - sudo apt-get -y install libsfml-audio2.5
+  - sudo apt-get -y install libsfml-dev
 script:
 - make && make run
 - git ls-files src/ | xargs clang-format -i && git diff --exit-code
