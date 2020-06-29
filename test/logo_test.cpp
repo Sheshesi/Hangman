@@ -1,6 +1,6 @@
 #define CATCH_CONFIG_MAIN
 #include "SFML/Graphics.hpp"
-#include "logo.hpp"
+#include <logo.hpp>
 #include <catch.hpp>
 using namespace sf;
 TEST_CASE("logo_test", "logo")
