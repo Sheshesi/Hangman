@@ -14,6 +14,8 @@ addons:
     - libvorbis-dev
     - libflac-dev
     update: true
+before_install:
+  - sudo apt-get -y install g++
 script:
 - make && make run && make testing
 - git ls-files src/ | xargs clang-format -i && git diff --exit-code
