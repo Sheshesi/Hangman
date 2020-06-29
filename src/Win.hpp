@@ -3,5 +3,5 @@
 using namespace sf;
 class winWindow {
 public:
-  bool Win(RenderWindow &window);
+    bool Win(RenderWindow& window);
 };
