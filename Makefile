@@ -12,7 +12,7 @@ BUL_TEST = build/test/
 all: $(BIN)game
 
 $(BIN)game: $(BUL)Hangman.o $(BUL)logo.o $(BUL)Menu.o $(BUL)HowToPlay.o $(BUL)Options.o $(BUL)logic.o $(BUL)Win.o $(BUL)Lose.o
-	$(SS) -o $(BIN)game $(BUL)Hangman.o $(BUL)logo.o $(BUL)Menu.o $(BUL)HowToPlay.o $(BUL)Options.o $(BUL)logic.o $(BUL)Win.o $(BUL)Lose.o$(SFML)
+	$(SS) -o $(BIN)game $(BUL)Hangman.o $(BUL)logo.o $(BUL)Menu.o $(BUL)HowToPlay.o $(BUL)Options.o $(BUL)logic.o $(BUL)Win.o $(BUL)Lose.o $(SFML)
 
 $(BUL)Hangman.o: $(SR)Hangman.cpp
 	$(SS) $(SSFLAGS) -I $(SR) -I $(TRD) -c $(SR)Hangman.cpp -o $(BUL)Hangman.o $(SFML)
