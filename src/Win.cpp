@@ -8,4 +8,8 @@ bool winWindow::Win(RenderWindow& window) {
 	wind.loadFromFile("images/Win/1x/window.png");
 	yes.loadFromFile("images/Win/1x/yes.png");
 	no.loadFromFile("images/Win/1x/no.png");
+    Texture Wind, Yes, No;
+	Wind.loadFromImage(wind);
+	Yes.loadFromImage(yes);
+	No.loadFromImage(no);
 }
