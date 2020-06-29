@@ -13,7 +13,9 @@ before_install:
   - sudo apt-get -y install libvorbis-dev
   - sudo apt-get -y install libflac-dev
   - echo 'deb http://ftp.de.debian.org/debian sid main' |sudo tee -a /etc/apt/sources.list
-  - sudo apt-key adv --recv-keys --keyserver keyserver.ubuntu.com `sudo apt-get update 2>&1 | grep -o '[0-9A-Z]\{16\}$' | xargs`
+  - sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 04EE7237B7D453EC
+  - sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 648ACFD622F3D138
+  - sudo apt update
   - sudo apt-get -y install libsfml-audio2.5
 script:
 - make && make run && make testing
