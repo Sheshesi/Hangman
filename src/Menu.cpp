@@ -7,14 +7,15 @@
 #include "logic.hpp"
 #include <vector>
 #include <string>
-
+#include "logic.hpp"
 using namespace sf;
-void Menu::menu(RenderWindow &window, Music &jazz) {
+void Menu::menu(RenderWindow& window,vector<Sprite> &sprt, vector<Texture> &txtr, vector<Sprite> &shadow, Music &jazz, string &the_word, string &path, int num, ifstream &themeFile, string str, vector<string> &words) {
   Font font;
   Clock clock;
   SoundBuffer buffer;
   howToButton howTo;
   options optionButton;
+  mainLogic logic;
   buffer.loadFromFile("audio/Click.ogg");
   Sound sound;
   sound.setBuffer(buffer);
@@ -115,7 +116,7 @@ void Menu::menu(RenderWindow &window, Music &jazz) {
       if (event.mouseButton.button == Mouse::Left) {
         if (menuNum == 1) {
           sound.play();
-          isMenu = false;
+          logic.logicFunction(window,sprt,txtr,shadow,jazz,the_word,path,num,themeFile,str,words);
         }
         if (menuNum == 2) {
           sound.play();
