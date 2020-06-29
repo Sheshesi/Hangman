@@ -3,13 +3,15 @@
 #include "Options.hpp"
 #include "SFML/Audio.hpp"
 #include "SFML/Graphics.hpp"
+#include "logic.hpp"
 #include <iostream>
-#include "logic.hpp"
-#include <vector>
 #include <string>
-#include "logic.hpp"
+#include <vector>
 using namespace sf;
-void Menu::menu(RenderWindow& window,vector<Sprite> &sprt, vector<Texture> &txtr, vector<Sprite> &shadow, Music &jazz, string &the_word, string &path, int num, ifstream &themeFile, string str, vector<string> &words) {
+void Menu::menu(RenderWindow &window, vector<Sprite> &sprt,
+                vector<Texture> &txtr, vector<Sprite> &shadow, Music &jazz,
+                string &the_word, string &path, int num, ifstream &themeFile,
+                string str, vector<string> &words) {
   Font font;
   Clock clock;
   SoundBuffer buffer;
@@ -116,7 +118,8 @@ void Menu::menu(RenderWindow& window,vector<Sprite> &sprt, vector<Texture> &txtr
       if (event.mouseButton.button == Mouse::Left) {
         if (menuNum == 1) {
           sound.play();
-          logic.logicFunction(window,sprt,txtr,shadow,jazz,the_word,path,num,themeFile,str,words);
+          logic.logicFunction(window, sprt, txtr, shadow, jazz, the_word, path,
+                              num, themeFile, str, words);
         }
         if (menuNum == 2) {
           sound.play();

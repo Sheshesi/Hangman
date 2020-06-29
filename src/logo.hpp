@@ -3,5 +3,5 @@
 using namespace sf;
 class Logo {
 public:
-    void ShowLogo(RenderWindow& window);
+  void ShowLogo(RenderWindow &window);
 };

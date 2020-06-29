@@ -2,5 +2,5 @@
 #include "SFML/Graphics.hpp"
 class howToButton {
 public:
-    void HowToPlay(sf::RenderWindow& window);
+  void HowToPlay(sf::RenderWindow &window);
 };

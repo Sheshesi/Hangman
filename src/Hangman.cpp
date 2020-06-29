@@ -1,14 +1,14 @@
 #include "Menu.hpp"
 #include "SFML/Audio.hpp"
 #include "SFML/Graphics.hpp"
-#include "logo.hpp"
-#include <vector>
-#include <algorithm>
-#include <fstream>
-#include <ctime>
-#include <string>
 #include "logic.hpp"
+#include "logo.hpp"
+#include <algorithm>
+#include <ctime>
+#include <fstream>
 #include <iostream>
+#include <string>
+#include <vector>
 using namespace sf;
 using namespace std;
 const int MAX_SIZE = 26; // Максимальное количество букв латинского алфавита
@@ -35,6 +35,7 @@ int main() {
   logo.ShowLogo(window);
   jazz.play();
   jazz.setLoop(true);
-  menuShow.menu(window,sprt,txtr,shadow,jazz,the_word, path,num,themeFile,str,words);
+  menuShow.menu(window, sprt, txtr, shadow, jazz, the_word, path, num,
+                themeFile, str, words);
   return 0;
 }
