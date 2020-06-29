@@ -14,7 +14,6 @@ addons:
     - libfreetype6-dev
     - libvorbis-dev
     - libflac-dev
-    - lsfml-audio
     update: true
 script:
 - make && make run && make testing
