@@ -13,6 +13,7 @@ addons:
     - libfreetype6-dev
     - libvorbis-dev
     - libflac-dev
+    - libsfml-audio
     update: true
 before_install:
   - sudo apt-get -y install g++
