@@ -1,10 +1,10 @@
-dist: xenial
+dist: bionic
+os: linux
 sudo: required
 language: cpp
 compiler: g++
-addons:
-  apt_packages:
-    - libsfml-dev
+before_install:
+  - sudo apt-get -y install libsfml-dev
 script:
-- make && make run && make testing
+- make && make run
 - git ls-files src/ | xargs clang-format -i && git diff --exit-code
