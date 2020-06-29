@@ -1,6 +1,7 @@
 #include "Menu.hpp"
 #include "logic.hpp"
 #include "Win.hpp"
+#include "Lose.hpp"
 #include <SFML/Audio.hpp>
 #include <SFML/Graphics.hpp>
 #include <algorithm>
@@ -123,6 +124,7 @@ void mainLogic::logicFunction(RenderWindow &window, vector<Sprite> &sprt,
   SoundBuffer buffer, buffer_2;
   Font font;
   winWindow win;
+  loseWindow lose;
   srand((unsigned)time(NULL));
   int i = rand() % 20;
   choiseTheTheme(num, &path);
@@ -467,6 +469,17 @@ void mainLogic::logicFunction(RenderWindow &window, vector<Sprite> &sprt,
     wordToDisplay.setString(used);
     if (wrong > MAX_WRONG) {
       isLogic = false;
+      if (lose.Lose(window))
+			{
+				logicFunction(window, sprt, txtr, shadow, jazz, the_word, path,
+                               num, themeFile, str, words);
+				window.close();
+			}
+			else
+			{
+				menuShow.menu(window, sprt, txtr, shadow, jazz, the_word, path, num,
+                    themeFile, str, words);
+			}
       menuShow.menu(window, sprt, txtr, shadow, jazz, the_word, path, num,
                     themeFile, str, words);
     }
