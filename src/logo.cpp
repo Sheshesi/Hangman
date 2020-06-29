@@ -1,4 +1,4 @@
-#include "logo.h"
+#include "logo.hpp"
 #include "SFML/Audio.hpp"
 #include "SFML/Graphics.hpp"
 using namespace sf;

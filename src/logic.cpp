@@ -3,7 +3,7 @@
 #include <string>
 #include <algorithm>
 #include "logic.hpp"
-#include "Menu.h"
+#include "Menu.hpp"
 #include <fstream>
 #include <string>
 #include <vector>

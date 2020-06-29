@@ -1,4 +1,4 @@
-#include "Options.h"
+#include "Options.hpp"
 #include "SFML/Audio.hpp"
 #include "SFML/Graphics.hpp"
 #include <sstream>

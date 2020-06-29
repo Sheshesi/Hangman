@@ -1,6 +1,6 @@
-#include "HowToPlay.h"
-#include "Menu.h"
-#include "Options.h"
+#include "HowToPlay.hpp"
+#include "Menu.hpp"
+#include "Options.hpp"
 #include "SFML/Audio.hpp"
 #include "SFML/Graphics.hpp"
 #include <iostream>

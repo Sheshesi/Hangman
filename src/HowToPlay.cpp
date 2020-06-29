@@ -1,4 +1,4 @@
-#include "HowToPlay.h"
+#include "HowToPlay.hpp"
 #include "SFML/Graphics.hpp"
 #include "SFML/Audio.hpp"
 using namespace sf;

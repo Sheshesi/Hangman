@@ -1,7 +1,7 @@
-#include "Menu.h"
+#include "Menu.hpp"
 #include "SFML/Audio.hpp"
 #include "SFML/Graphics.hpp"
-#include "logo.h"
+#include "logo.hpp"
 #include <vector>
 #include <algorithm>
 #include <fstream>
