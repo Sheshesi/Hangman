@@ -1,7 +1,6 @@
 #include "Menu.hpp"
 #include "SFML/Audio.hpp"
 #include "SFML/Graphics.hpp"
-#include "logic.hpp"
 #include "logo.hpp"
 #include <algorithm>
 #include <ctime>
@@ -20,8 +19,6 @@ int main()
     Font font;
     Logo logo;
     Music jazz;
-    Sound sound;
-    Sound clap;
     Menu menuShow;
     SoundBuffer buffer, buffer2;
     string path, str, the_word;
