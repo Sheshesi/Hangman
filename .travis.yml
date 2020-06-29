@@ -2,9 +2,9 @@ dist: xenial
 sudo: required
 language: cpp
 compiler: g++
-addons:
-  apt_packages:
-    - libsfml-dev
+before_install:
+  - sudo apt-get update
+  - sudo apt-get -y install libsfml-dev
 script:
 - make && make run && make testing
 - git ls-files src/ | xargs clang-format -i && git diff --exit-code
