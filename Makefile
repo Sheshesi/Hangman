@@ -9,9 +9,9 @@ TRD = thirdparty/
 BUL = build/
 BIN = bin/
 BUL_TEST = build/test/
-all: $(BIN)game
+all: $(BIN)game $(BIN)check
 
-$(BIN)game: $(BUL)Hangman.o $(BUL)logo.o $(BUL)Menu.o $(BUL)HowToPlay.o $(BUL)Options.o $(BUL)logic.o $(BUL)Win.o $(BUL)Lose.o
+$(BIN)game: $(BUL)Hangman.o $(BUL)logo.o $(BUL)Menu.o $(BUL)HowToPlay.o $(BUL)Options.o $(BUL)logic.o $(BUL)Win.o $(BUL)Lose.o $(BIN)check
 	$(SS) -o $(BIN)game $(BUL)Hangman.o $(BUL)logo.o $(BUL)Menu.o $(BUL)HowToPlay.o $(BUL)Options.o $(BUL)logic.o $(BUL)Win.o $(BUL)Lose.o $(SFML)
 
 $(BUL)Hangman.o: $(SR)Hangman.cpp
@@ -37,6 +37,15 @@ $(BUL)Win.o: $(SR)Win.cpp
 
 $(BUL)Lose.o: $(SR)Lose.cpp
 	$(SS) $(SSFLAGS) -I $(SR) -c $(SR)Lose.cpp -o $(BUL)Lose.o $(SFML)
+
+$(BIN)check: $(BUL_TEST)logo_test.o $(BUL)logo.o
+	$(SS) $(BUL_TEST)logo_test.o $(BUL)logo.o -o $(BIN)check $(SFML)
+
+$(BUL_TEST)logo_test.o: test/logo_test.cpp
+	$(SS) -I $(TRD) -I src -c test/logo_test.cpp -o $(BUL_TEST)logo_test.o $(SFML)
+
+testing: 
+	$(BIN)check
 
 clean:
 	rm -rf $(BUL)*.o
