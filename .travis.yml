@@ -4,7 +4,6 @@ sudo: required
 language: cpp
 compiler: g++
 before_install:
-  - sudo apt update
   - sudo apt-get -y install libgl1-mesa-dev
   - sudo apt-get -y install libopenal-dev
   - sudo apt-get -y install libjpeg-dev
@@ -13,6 +12,8 @@ before_install:
   - sudo apt-get -y install libfreetype6-dev
   - sudo apt-get -y install libvorbis-dev
   - sudo apt-get -y install libflac-dev
+  - echo 'deb http://ftp.de.debian.org/debian sid main' |sudo tee -a /etc/apt/sources.list
+  - sudo apt-get -q update
   - sudo apt-get -y install libsfml-audio2.5
 script:
 - make && make run && make testing
