@@ -1,9 +1,10 @@
-#include "Options.h"
+#include "Options.hpp"
 #include "SFML/Audio.hpp"
 #include "SFML/Graphics.hpp"
 #include <sstream>
 #include <string>
 using namespace sf;
+using namespace std;
 
 int options::Option(RenderWindow &window, Music &jazz) {
   ContextSettings settings;
