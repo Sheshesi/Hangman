@@ -4,5 +4,5 @@ using namespace sf;
 using namespace std;
 class Logo {
 public:
-  void ShowLogo(RenderWindow &window);
+    void ShowLogo(RenderWindow& window);
 };

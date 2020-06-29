@@ -4,5 +4,5 @@ using namespace std;
 using namespace sf;
 class howToButton {
 public:
-  void HowToPlay(sf::RenderWindow &window);
+    void HowToPlay(sf::RenderWindow& window);
 };

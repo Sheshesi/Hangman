@@ -3,5 +3,5 @@
 using namespace sf;
 class loseWindow {
 public:
-  bool Lose(RenderWindow &window);
+    bool Lose(RenderWindow& window);
 };
