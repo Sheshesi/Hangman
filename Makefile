@@ -3,7 +3,7 @@ OBJS = Hangman.o logo.o Menu.o
 CPP = Hangman.cpp logo.cpp Menu.cpp
 SS = g++
 SSFLAGS = -Wall -Werror -std=c++11
-SFML = -lsfml-graphics -lsfml-audio -lsfml-window -lsfml-system
+SFML = -lsfml-graphics -lsfml-window -lsfml-audio -lsfml-system
 SR = src/
 BUL = build/
 BIN = bin/
