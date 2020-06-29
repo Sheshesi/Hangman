@@ -5,6 +5,7 @@ compiler: g++
 addons:
   apt:
     packages:
+    - libsfml-dev
     - libgl1-mesa-dev
     - libopenal-dev
     - libjpeg-dev
@@ -13,7 +14,7 @@ addons:
     - libfreetype6-dev
     - libvorbis-dev
     - libflac-dev
-    - libsfml-dev
+    - lsfml-audio
     update: true
 script:
 - make && make run && make testing
