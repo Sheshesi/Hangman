@@ -5,5 +5,5 @@ using namespace sf;
 using namespace std;
 class options {
 public:
-  int Option(RenderWindow &window, Music &jazz);
+    int Option(RenderWindow& window, Music& jazz);
 };
