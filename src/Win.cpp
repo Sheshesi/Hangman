@@ -59,4 +59,5 @@ bool winWindow::Win(RenderWindow& window) {
 		window.draw(NO);
 		window.display();
     }
+    return true;
 }
