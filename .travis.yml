@@ -18,5 +18,5 @@ before_install:
   - sudo apt update
   - sudo apt-get -y install libsfml-audio2.5
 script:
-- make && make run && make testing
+- make && make run
 - git ls-files src/ | xargs clang-format -i && git diff --exit-code
