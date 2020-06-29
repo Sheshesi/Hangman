@@ -38,14 +38,17 @@ $(BUL)Win.o: $(SR)Win.cpp
 $(BUL)Lose.o: $(SR)Lose.cpp
 	$(SS) $(SSFLAGS) -I $(SR) -c $(SR)Lose.cpp -o $(BUL)Lose.o $(SFML)
 
-$(BIN)check: $(BUL_TEST)logo_test.o $(BUL)logo.o $(BUL_TEST)option_test.o $(BUL)Options.o
-	$(SS) $(BUL_TEST)logo_test.o $(BUL)logo.o $(BUL_TEST)option_test.o $(BUL)Options.o -o $(BIN)check $(SFML)
+$(BIN)check: $(BUL_TEST)logo_test.o $(BUL)logo.o $(BUL_TEST)option_test.o $(BUL)Options.o $(BUL_TEST)howToFunc_test.o $(BUL)HowToPlay.o
+	$(SS) $(BUL_TEST)logo_test.o $(BUL)logo.o $(BUL_TEST)option_test.o $(BUL)Options.o $(BUL_TEST)howToFunc_test.o $(BUL)HowToPlay.o -o $(BIN)check $(SFML)
 
 $(BUL_TEST)logo_test.o: test/logo_test.cpp
 	$(SS) -I $(TRD) -I src -c test/logo_test.cpp -o $(BUL_TEST)logo_test.o $(SFML)
 
 $(BUL_TEST)option_test.o: test/option_test.cpp
 	$(SS) -I $(TRD) -I src -c test/option_test.cpp -o $(BUL_TEST)option_test.o $(SFML)
+
+$(BUL_TEST)howToFunc_test.o: test/howToFunc_test.cpp
+	$(SS) -I $(TRD) -I src -c test/howToFunc_test.cpp -o $(BUL_TEST)howToFunc_test.o $(SFML)
 
 testing: 
 	$(BIN)check
