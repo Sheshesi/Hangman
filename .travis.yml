@@ -1,22 +1,19 @@
-dist: xenial
+dist: bionic
+os: linux
 sudo: required
 language: cpp
 compiler: g++
-addons:
-  apt:
-    packages:
-    - libgl1-mesa-dev
-    - libopenal-dev
-    - libjpeg-dev
-    - libudev-dev
-    - libxrandr-dev
-    - libfreetype6-dev
-    - libvorbis-dev
-    - libflac-dev
-    - libsfml-audio2.5
-    update: true
 before_install:
-  - sudo apt-get -y install g++
+  - sudo apt update
+  - sudo apt-get -y install libgl1-mesa-dev
+  - sudo apt-get -y install libopenal-dev
+  - sudo apt-get -y install libjpeg-dev
+  - sudo apt-get -y install libudev-dev
+  - sudo apt-get -y install libxrandr-dev
+  - sudo apt-get -y install libfreetype6-dev
+  - sudo apt-get -y install libvorbis-dev
+  - sudo apt-get -y install libflac-dev
+  - sudo apt-get -y install libsfml-audio2.5
 script:
 - make && make run && make testing
 - git ls-files src/ | xargs clang-format -i && git diff --exit-code
