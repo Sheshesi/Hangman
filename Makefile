@@ -11,8 +11,8 @@ BIN = bin/
 BUL_TEST = build/test/
 all: $(BIN)game
 
-$(BIN)game: $(BUL)Hangman.o $(BUL)logo.o $(BUL)Menu.o $(BUL)HowToPlay.o $(BUL)Options.o $(BUL)logic.o $(BUL)Win.o
-	$(SS) -o $(BIN)game $(BUL)Hangman.o $(BUL)logo.o $(BUL)Menu.o $(BUL)HowToPlay.o $(BUL)Options.o $(BUL)logic.o $(BUL)Win.o $(SFML)
+$(BIN)game: $(BUL)Hangman.o $(BUL)logo.o $(BUL)Menu.o $(BUL)HowToPlay.o $(BUL)Options.o $(BUL)logic.o $(BUL)Win.o $(BUL)Lose.o
+	$(SS) -o $(BIN)game $(BUL)Hangman.o $(BUL)logo.o $(BUL)Menu.o $(BUL)HowToPlay.o $(BUL)Options.o $(BUL)logic.o $(BUL)Win.o $(BUL)Lose.o$(SFML)
 
 $(BUL)Hangman.o: $(SR)Hangman.cpp
 	$(SS) $(SSFLAGS) -I $(SR) -I $(TRD) -c $(SR)Hangman.cpp -o $(BUL)Hangman.o $(SFML)
@@ -34,6 +34,9 @@ $(BUL)logic.o: $(SR)logic.cpp
 
 $(BUL)Win.o: $(SR)Win.cpp
 	$(SS) $(SSFLAGS) -I $(SR) -I $(TRD) -c $(SR)Win.cpp -o $(BUL)Win.o $(SFML)
+
+$(BUL)Lose.o: $(SR)Lose.cpp
+	$(SS) $(SSFLAGS) -I $(SR) -I $(TRD) -c $(SR)Lose.cpp -o $(BUL)Lose.o $(SFML)
 
 clean:
 	rm -rf $(BUL)*.o
