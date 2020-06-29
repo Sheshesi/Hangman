@@ -17,4 +17,46 @@ bool winWindow::Win(RenderWindow& window) {
 	YES.setTexture(Yes);
 	NO.setTexture(No);
 	WIND.setPosition(450, 240);
+    bool isWin = true;
+	while (isWin) {
+        YES.setColor(Color::White);
+		NO.setColor(Color::White);
+		YES.setPosition(500, 360);
+		NO.setPosition(690, 360);
+		sf::Event event;
+		while (window.pollEvent(event))
+		{
+			if (event.type == sf::Event::Closed)
+			{
+				window.close();
+			}
+		}
+		if (IntRect(500, 360, 150, 50).contains(Mouse::getPosition(window))) {
+			YES.setColor(Color(200, 200, 200));
+			if (event.type == Event::MouseButtonPressed)
+			{
+				if (event.mouseButton.button == Mouse::Left)
+				{
+					isWin = false;
+					return true;
+				}
+			}
+		}
+		if (IntRect(690, 360, 150, 50).contains(Mouse::getPosition(window))) {
+			NO.setColor(Color(200, 200, 200));
+			if (event.type == Event::MouseButtonPressed)
+			{
+				if (event.mouseButton.button == Mouse::Left)
+				{
+					isWin = false;
+					return false;
+				}
+			}
+		}
+		window.clear(Color(168, 154, 98));
+		window.draw(WIND);
+		window.draw(YES);
+		window.draw(NO);
+		window.display();
+    }
 }
