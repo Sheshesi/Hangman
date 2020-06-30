@@ -6,8 +6,7 @@
 
 ## **Project build**
 
-This project uses Makefile to build. 
-You can use the following commands: 
+To compile this programm you can use the command:  
 
 `$ make`
 
