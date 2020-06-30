@@ -1,3 +1,5 @@
+![Build Status](https://travis-ci.org/Sheshesi/Hangman.svg?branch=master)
+
 # TRPO project
 
 ---
